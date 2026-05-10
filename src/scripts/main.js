@@ -26,27 +26,57 @@ document.addEventListener('DOMContentLoaded', () => {
   // setInterval(() => goTo(current + 1), 4000);
 });
 
-
 const burger = document.getElementById('burger');
 const menu = document.getElementById('menu');
 
-burger.addEventListener('click', () => {
-  burger.classList.toggle('is-open');
-  menu.classList.toggle('is-open');
-});
+// створюємо overlay динамічно
+const overlay = document.createElement('div');
+overlay.id = 'menu-overlay';
+overlay.style.cssText = `
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  transition: opacity 0.35s ease;
+  opacity: 0;
+`;
+document.body.appendChild(overlay);
 
-// закриття меню при кліку на пункт
-document.querySelectorAll('.header__menu-item').forEach(item => {
-  item.addEventListener('click', () => {
-    burger.classList.remove('is-open');
-    menu.classList.remove('is-open');
+function openMenu() {
+  burger.classList.add('is-open');
+  menu.classList.add('is-open');
+  overlay.style.display = 'block';
+  // невеликий delay щоб transition спрацював
+  requestAnimationFrame(() => {
+    overlay.style.opacity = '1';
   });
+  document.body.style.overflow = 'hidden'; // блокуємо скрол
+}
+
+function closeMenu() {
+  burger.classList.remove('is-open');
+  menu.classList.remove('is-open');
+  overlay.style.opacity = '0';
+  setTimeout(() => {
+    overlay.style.display = 'none';
+  }, 350);
+  document.body.style.overflow = '';
+}
+
+burger.addEventListener('click', () => {
+  menu.classList.contains('is-open') ? closeMenu() : openMenu();
 });
 
-// закриття при кліку поза меню
-document.addEventListener('click', (e) => {
-  if (!e.target.closest('.header')) {
-    burger.classList.remove('is-open');
-    menu.classList.remove('is-open');
-  }
+// закриття при кліку на overlay
+overlay.addEventListener('click', closeMenu);
+
+// закриття при кліку на пункт меню
+document.querySelectorAll('.header__menu-item').forEach(item => {
+  item.addEventListener('click', closeMenu);
+});
+
+// закриття по Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeMenu();
 });
