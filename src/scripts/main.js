@@ -80,3 +80,8 @@ document.querySelectorAll('.header__menu-item').forEach(item => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeMenu();
 });
+
+document.querySelector('.info__message').addEventListener('submit', (e) => {
+  e.preventDefault();
+  e.target.reset();
+});

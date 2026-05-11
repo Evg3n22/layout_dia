@@ -4,6 +4,9 @@
 
 @import 'https://fonts.googleapis.com/css2?family=Poppins, sans-serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap';
 
+// stylelint-disable no-descending-specificity
+// stylelint-disable no-duplicate-selectors
+
 // On phone gap is 20px, 2 columns.
 // Tablet - 30px, 6 columns.
 // Desktop - 20px, 12 columns.
@@ -80,6 +83,10 @@ body {
 
   &__logo {
     font-size: 24px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__burger {
@@ -1191,6 +1198,16 @@ body {
           opacity: 0.7;
         }
 
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus {
+          -webkit-box-shadow: 0 0 0 1000px $primary-color inset;
+          caret-color: $white-color;
+          transition: background-color 5000s ease-in-out 0s;
+
+          -webkit-text-fill-color: $white-color;
+        }
+
         &:focus {
           border-bottom: 2px solid $white-color;
           outline: none;
@@ -1361,6 +1378,223 @@ body {
       gap: 24px;
       align-items: start;
       margin-bottom: 80px;
+    }
+  }
+}
+
+
+
+// ─── Hovers ─────────────────────────────────────
+a, button, [class*="__btn"], [class*="__burger"], [class*="__hire-us"] {
+  cursor: pointer;
+}
+
+// ─── Header ───────────────────────────────────────────────
+.header {
+  &__menu-item {
+    position: relative;
+    transition: opacity 0.2s ease;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+
+      width: 0;
+      height: 2px;
+
+      background-color: $white-color;
+
+      transition: width 0.3s ease;
+    }
+
+    &:hover {
+      opacity: 0.8;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__hire-us {
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__logo {
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+// ─── Hero ─────────────────────────────────────────────────
+.hero {
+  &__info__btn {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      background-color: #f55d5d;
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &__carousel__btn {
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
+
+// ─── Services ─────────────────────────────────────────────
+.services {
+  &__item {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    &__btn {
+      transition: transform 0.2s ease, opacity 0.2s ease;
+
+      &:hover {
+        transform: scale(1.1);
+        opacity: 0.85;
+      }
+    }
+
+    &__footer:hover &__btn-text {
+      opacity: 0.7;
+    }
+
+    &__btn-text {
+      transition: opacity 0.2s ease;
+    }
+  }
+}
+
+// ─── Testimonials ─────────────────────────────────────────
+.testimonials {
+  &__item {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 4px 8px 24px rgba(0, 0, 0, 0.08);
+    }
+  }
+}
+
+// ─── Shapes ───────────────────────────────────────────────
+.shapes {
+  &__btn {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      background-color: #f55d5d;
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// ─── Contact form ─────────────────────────────────────────
+.info {
+  &__message {
+    input {
+      transition: border-bottom 0.2s ease, padding-bottom 0.2s ease;
+    }
+
+    &__btn {
+      transition: background-color 0.3s ease, transform 0.2s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        background-color: #f55d5d;
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__contact {
+    &__phone,
+    &__address {
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    &__socials {
+      img {
+        transition: transform 0.2s ease, opacity 0.2s ease;
+
+        &:hover {
+          transform: scale(1.15);
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
+
+// ─── Footer ───────────────────────────────────────────────
+.footer {
+  &__menu-item,
+  a {
+    position: relative;
+    transition: opacity 0.2s ease;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+
+      width: 0;
+      height: 2px;
+
+      background-color: $white-color;
+
+      transition: width 0.3s ease;
+    }
+
+    &:hover {
+      opacity: 0.8;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__logo {
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
     }
   }
 }
