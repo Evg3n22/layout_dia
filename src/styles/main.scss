@@ -588,7 +588,7 @@ body {
   grid-template-columns: 1fr repeat(3, 2fr) repeat(3, 1fr) repeat(4, 2fr) 1fr;
   grid-template-rows: repeat(5, 1fr);
 
-  padding: 150px 0;
+  padding: 130px 0;
 
   &__info {
     display: flex;
@@ -649,6 +649,7 @@ body {
       width: min-content;
       padding: 2px 10px;
       border-radius: 20px;
+      font-family: Poppins, sans-serif;
     }
 
     &__desc {
@@ -809,7 +810,7 @@ body {
   display: flex;
   grid-column: 2 / -2;
   flex-direction: column;
-  padding: 150px 0;
+  padding-bottom: 100px;
 
   &__sub-title {
     margin-bottom: 16px;
@@ -1382,10 +1383,12 @@ body {
   }
 }
 
-
-
 // ─── Hovers ─────────────────────────────────────
-a, button, [class*="__btn"], [class*="__burger"], [class*="__hire-us"] {
+a,
+button,
+[class*='__btn'],
+[class*='__burger'],
+[class*='__hire-us'] {
   cursor: pointer;
 }
 
@@ -1439,7 +1442,9 @@ a, button, [class*="__btn"], [class*="__burger"], [class*="__hire-us"] {
 // ─── Hero ─────────────────────────────────────────────────
 .hero {
   &__info__btn {
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition:
+      background-color 0.3s ease,
+      transform 0.2s ease;
 
     &:hover {
       transform: translateY(-2px);
@@ -1461,7 +1466,9 @@ a, button, [class*="__btn"], [class*="__burger"], [class*="__hire-us"] {
 // ─── Services ─────────────────────────────────────────────
 .services {
   &__item {
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
 
     &:hover {
       transform: translateY(-4px);
@@ -1469,7 +1476,9 @@ a, button, [class*="__btn"], [class*="__burger"], [class*="__hire-us"] {
     }
 
     &__btn {
-      transition: transform 0.2s ease, opacity 0.2s ease;
+      transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
 
       &:hover {
         transform: scale(1.1);
@@ -1490,7 +1499,9 @@ a, button, [class*="__btn"], [class*="__burger"], [class*="__hire-us"] {
 // ─── Testimonials ─────────────────────────────────────────
 .testimonials {
   &__item {
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
 
     &:hover {
       transform: translateY(-4px);
@@ -1502,7 +1513,9 @@ a, button, [class*="__btn"], [class*="__burger"], [class*="__hire-us"] {
 // ─── Shapes ───────────────────────────────────────────────
 .shapes {
   &__btn {
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition:
+      background-color 0.3s ease,
+      transform 0.2s ease;
 
     &:hover {
       transform: translateY(-2px);
@@ -1519,11 +1532,15 @@ a, button, [class*="__btn"], [class*="__burger"], [class*="__hire-us"] {
 .info {
   &__message {
     input {
-      transition: border-bottom 0.2s ease, padding-bottom 0.2s ease;
+      transition:
+        border-bottom 0.2s ease,
+        padding-bottom 0.2s ease;
     }
 
     &__btn {
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      transition:
+        background-color 0.3s ease,
+        transform 0.2s ease;
 
       &:hover {
         transform: translateY(-2px);
@@ -1548,7 +1565,9 @@ a, button, [class*="__btn"], [class*="__burger"], [class*="__hire-us"] {
 
     &__socials {
       img {
-        transition: transform 0.2s ease, opacity 0.2s ease;
+        transition:
+          transform 0.2s ease,
+          opacity 0.2s ease;
 
         &:hover {
           transform: scale(1.15);
