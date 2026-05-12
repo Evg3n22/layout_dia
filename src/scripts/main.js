@@ -26,10 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // setInterval(() => goTo(current + 1), 4000);
 });
 
+
 const burger = document.getElementById('burger');
 const menu = document.getElementById('menu');
 
-// створюємо overlay динамічно
+document.getElementById('menu-close').addEventListener('click', closeMenu);
+
+// ─── Overlay ──────────────────────────────────────────────
 const overlay = document.createElement('div');
 overlay.id = 'menu-overlay';
 overlay.style.cssText = `
@@ -43,15 +46,15 @@ overlay.style.cssText = `
 `;
 document.body.appendChild(overlay);
 
+// ─── Open / Close ─────────────────────────────────────────
 function openMenu() {
   burger.classList.add('is-open');
   menu.classList.add('is-open');
   overlay.style.display = 'block';
-  // невеликий delay щоб transition спрацював
   requestAnimationFrame(() => {
     overlay.style.opacity = '1';
   });
-  document.body.style.overflow = 'hidden'; // блокуємо скрол
+  document.body.style.overflow = 'hidden';
 }
 
 function closeMenu() {
@@ -64,23 +67,52 @@ function closeMenu() {
   document.body.style.overflow = '';
 }
 
+// ─── Burger ───────────────────────────────────────────────
 burger.addEventListener('click', () => {
   menu.classList.contains('is-open') ? closeMenu() : openMenu();
 });
 
-// закриття при кліку на overlay
+// ─── Overlay click ────────────────────────────────────────
 overlay.addEventListener('click', closeMenu);
 
-// закриття при кліку на пункт меню
-document.querySelectorAll('.header__menu-item').forEach(item => {
-  item.addEventListener('click', closeMenu);
-});
-
-// закриття по Escape
+// ─── Escape ───────────────────────────────────────────────
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeMenu();
 });
 
+// ─── Пункти меню: плавний скрол + закриття шторки ────────
+document.querySelectorAll('.header__menu-item').forEach(item => {
+  item.addEventListener('click', (e) => {
+    const href = item.getAttribute('href');
+    if (!href || !href.startsWith('#')) return;
+
+    e.preventDefault(); // зупиняємо дефолтний перехід
+
+    closeMenu(); // закриваємо шторку
+
+    // скролимо після закриття анімації
+    setTimeout(() => {
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 350); // час = тривалість transition шторки
+  });
+});
+
+// ─── Swipe для закриття на мобільному ────────────────────
+let touchStartX = 0;
+
+menu.addEventListener('touchstart', (e) => {
+  touchStartX = e.touches[0].clientX;
+}, { passive: true });
+
+menu.addEventListener('touchend', (e) => {
+  const diff = e.changedTouches[0].clientX - touchStartX;
+  if (diff > 60) closeMenu(); // свайп вправо → закрити
+}, { passive: true });
+
+// ─── Форма ────────────────────────────────────────────────
 document.querySelector('.info__message').addEventListener('submit', (e) => {
   e.preventDefault();
   e.target.reset();

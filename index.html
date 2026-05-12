@@ -6,6 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
+    <link rel="icon" type="image/x-icon" href="./src/images/logo.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -21,7 +22,6 @@
       <div class="header">
         <div class="header__left">
           <a class="header__logo" href="#hero">Air</a>
-          <!-- бургер одразу після лого -->
           <div class="header__burger" id="burger">
             <span></span>
             <span></span>
@@ -30,6 +30,7 @@
         </div>
 
         <div class="header__menu" id="menu">
+          <button class="header__menu-close" id="menu-close">&#x2715;</button>
           <a class="header__menu-item" href="#about">about us</a>
           <a class="header__menu-item" href="#services">services</a>
           <a class="header__menu-item" href="#work">work</a>
@@ -48,13 +49,6 @@
         <div class="hero__carousel">
           <div class="hero__carousel__card">
             <div class="hero__carousel__slides">
-
-              <!-- Ghost image — дає висоту контейнеру -->
-              <!-- <img 
-                src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80" 
-                style="width:100%; display:block; visibility:hidden;"
-                alt=""
-              > -->
 
               <!-- Слайд 1 -->
               <div class="hero__carousel__slide active">
@@ -239,7 +233,7 @@
 
     <div class="info-wrapper" id="contact">
       <div class="info">
-        <form class="info__message">
+        <form class="info__message" onsubmit="this.reset(); return false;">
           <div class="info__message__title">Send us a message</div>
           <div class="info__message__inputs">
             <div class="info__message__email">
